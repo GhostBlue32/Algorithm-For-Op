@@ -22,7 +22,8 @@ function run_nonnegative_matrix_factorization_image()
         H0 = 5*rand(p,c);
         
         % Do factorization
-        [W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
+        %[W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
+        [w,H] = Coordinate_descent(r, W0, H0, tol);
         
         [r,c] = size(W);  
         fprintf('W size = [%d,%d].\n', r, c)  
@@ -35,7 +36,8 @@ function run_nonnegative_matrix_factorization_image()
         endtime = toc;
 
         % Save the image with a name that includes the value of p
-        filename = sprintf('result/reconstructed_image_p=%d.png', p);
+        %filename = sprintf('GSDresult/reconstructed_image_p=%d.png', p);
+        filename = sprintf('CDresult/reconstructed_image_p=%d.png', p);
         imwrite(D, filename);
         fprintf('The time for p=%d is %f s\n', p, endtime - starttime)
     end

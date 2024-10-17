@@ -1,4 +1,5 @@
 function [Wnp1, Hnp1] = Coordinate_descent(A, W0, H0, tol)
+<<<<<<< HEAD
   % Coordinate descent used for NMF.  
   % A is the matrix to decompose.  The initial guesses are matrices W0 and H0.
 
@@ -51,4 +52,5 @@ function [Wnp1, Hnp1] = Coordinate_descent(A, W0, H0, tol)
   end  % end of for loop
 
   error('Non-negative matrix factorization terminated without convergence!\n')
+
 end
