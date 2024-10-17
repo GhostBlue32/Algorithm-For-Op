@@ -22,7 +22,8 @@ function run_nonnegative_matrix_factorization_image()
         H0 = 5*rand(p,c);
         
         % Do factorization
-        [W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
+        %[W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
+        [w,H] = Coordinate_descent(r, W0, H0, tol);
         
         [r,c] = size(W);  
         fprintf('W size = [%d,%d].\n', r, c)  
