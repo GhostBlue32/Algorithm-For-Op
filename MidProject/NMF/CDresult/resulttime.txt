@@ -1,0 +1,51 @@
+run_nonnegative_matrix_factorization_image
+Image size = [600,600].
+Converged after 6335 iterations.
+W size = [600,10].
+H size = [10,600].
+The time for p=10 is 76.093294 s
+Image size = [600,600].
+Converged after 38465 iterations.
+W size = [600,20].
+H size = [20,600].
+The time for p=20 is 899.547755 s
+Image size = [600,600].
+Converged after 42343 iterations.
+W size = [600,30].
+H size = [30,600].
+The time for p=30 is 1437.785470 s
+Image size = [600,600].
+Converged after 84062 iterations.
+W size = [600,40].
+H size = [40,600].
+The time for p=40 is 3780.613235 s
+Image size = [600,600].
+Converged after 103336 iterations.
+W size = [600,50].
+H size = [50,600].
+The time for p=50 is 5761.150639 s
+Image size = [600,600].
+Converged after 31472 iterations.
+W size = [600,60].
+H size = [60,600].
+The time for p=60 is 2103.831231 s
+Image size = [600,600].
+Converged after 63412 iterations.
+W size = [600,70].
+H size = [70,600].
+The time for p=70 is 4942.677841 s
+Image size = [600,600].
+Converged after 70794 iterations.
+W size = [600,80].
+H size = [80,600].
+The time for p=80 is 6260.032351 s
+Image size = [600,600].
+Converged after 98345 iterations.
+W size = [600,90].
+H size = [90,600].
+The time for p=90 is 9770.785834 s
+Image size = [600,600].
+Converged after 48218 iterations.
+W size = [600,100].
+H size = [100,600].
+The time for p=100 is 5284.030530 s

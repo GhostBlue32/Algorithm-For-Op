@@ -1,0 +1,86 @@
+run_nonnegative_matrix_factorization_image
+Image size = [600,600].
+Converged after 20232 iterations.
+W size = [600,10].
+H size = [10,600].
+The time for p=10 is 25.094162 s
+Image size = [600,600].
+Converged after 63135 iterations.
+W size = [600,20].
+H size = [20,600].
+The time for p=20 is 98.371069 s
+Image size = [600,600].
+Converged after 114179 iterations.
+W size = [600,30].
+H size = [30,600].
+The time for p=30 is 223.419958 s
+Image size = [600,600].
+Converged after 97883 iterations.
+W size = [600,40].
+H size = [40,600].
+The time for p=40 is 232.371107 s
+Image size = [600,600].
+Converged after 80318 iterations.
+W size = [600,50].
+H size = [50,600].
+The time for p=50 is 231.499291 s
+Image size = [600,600].
+Converged after 147437 iterations.
+W size = [600,60].
+H size = [60,600].
+The time for p=60 is 475.723134 s
+Image size = [600,600].
+Converged after 96245 iterations.
+W size = [600,70].
+H size = [70,600].
+The time for p=70 is 373.450379 s
+Image size = [600,600].
+Converged after 69895 iterations.
+W size = [600,80].
+H size = [80,600].
+The time for p=80 is 304.543471 s
+Image size = [600,600].
+Converged after 124595 iterations.
+W size = [600,90].
+H size = [90,600].
+The time for p=90 is 639.776863 s
+Image size = [600,600].
+Converged after 131068 iterations.
+W size = [600,100].
+H size = [100,600].
+The time for p=100 is 740.938478 s
+Image size = [600,600].
+Converged after 119656 iterations.
+W size = [600,100].
+H size = [100,600].
+The time for p=100 is 657.266097 s
+Image size = [600,600].
+Converged after 65509 iterations.
+W size = [600,150].
+H size = [150,600].
+The time for p=150 is 653.550926 s
+Image size = [600,600].
+Converged after 54229 iterations.
+W size = [600,200].
+H size = [200,600].
+The time for p=200 is 778.490727 s
+Image size = [600,600].
+Converged after 39735 iterations.
+W size = [600,250].
+H size = [250,600].
+The time for p=250 is 848.733613 s
+Image size = [600,600].
+Converged after 35206 iterations.
+W size = [600,300].
+H size = [300,600].
+The time for p=300 is 949.901953 s
+Image size = [600,600].
+Converged after 27646 iterations.
+W size = [600,350].
+H size = [350,600].
+The time for p=350 is 991.145511 s
+Image size = [600,600].
+Converged after 21924 iterations.
+W size = [600,400].
+H size = [400,600].
+The time for p=400 is 959.395100 s
