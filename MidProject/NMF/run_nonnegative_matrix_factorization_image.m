@@ -1,9 +1,9 @@
 function run_nonnegative_matrix_factorization_image()
     tic;
-    for p = 10:10:100
+    for p = 10:10:300
         
         starttime = toc;
-        tol = 1e-3;
+        tol = 1e-5;
     
         C = imread('Pro.png');  % This image is in uint8 format.
         

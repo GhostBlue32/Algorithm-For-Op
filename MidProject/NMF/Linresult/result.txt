@@ -1,0 +1,212 @@
+Image size = [600,600].
+Init gradient norm 11184146.153825
+..............................................................................................................................................................................................
+Iter = 1908 Final proj-grad norm 14.652114
+W size = [600,10].
+H size = [10,600].
+The time for p=10 is 10.941485 s
+Image size = [600,600].
+Init gradient norm 8749903.940476
+.........................................................................................................................................................................................................................................................................................
+Iter = 2816 Final proj-grad norm 11.499233
+W size = [600,20].
+H size = [20,600].
+The time for p=20 is 25.653757 s
+Image size = [600,600].
+Init gradient norm 23022189.615581
+......................................................................................................................................................................................................................................
+Iter = 2309 Final proj-grad norm 228.343882
+W size = [600,30].
+H size = [30,600].
+The time for p=30 is 33.261918 s
+Image size = [600,600].
+Init gradient norm 43996844.363166
+.......................................................................................................................
+Iter = 1192 Final proj-grad norm 438.123901
+W size = [600,40].
+H size = [40,600].
+The time for p=40 is 31.082308 s
+Image size = [600,600].
+Init gradient norm 71397028.755631
+......................................................................
+Iter = 706 Final proj-grad norm 698.313117
+W size = [600,50].
+H size = [50,600].
+The time for p=50 is 49.806990 s
+Image size = [600,600].
+Init gradient norm 103553763.538977
+.............................................
+Iter = 451 Final proj-grad norm 995.389872
+W size = [600,60].
+H size = [60,600].
+The time for p=60 is 29.255330 s
+Image size = [600,600].
+Init gradient norm 137416090.841908
+.................................................
+Iter = 500 Final proj-grad norm 1373.264580
+W size = [600,70].
+H size = [70,600].
+The time for p=70 is 42.915417 s
+Image size = [600,600].
+Init gradient norm 178436969.633825
+..............................Max iter in nlssubprob
+.
+Iter = 312 Final proj-grad norm 245.301933
+W size = [600,80].
+H size = [80,600].
+The time for p=80 is 29.784085 s
+Image size = [600,600].
+Init gradient norm 217769234.889340
+...........
+Iter = 113 Final proj-grad norm 2158.522295
+W size = [600,90].
+H size = [90,600].
+The time for p=90 is 9.361841 s
+Image size = [600,600].
+Init gradient norm 261604241.613539
+........
+Iter = 82 Final proj-grad norm 2600.248536
+W size = [600,100].
+H size = [100,600].
+The time for p=100 is 7.977312 s
+Image size = [600,600].
+Init gradient norm 313553861.595760
+......
+Iter = 70 Final proj-grad norm 3002.371127
+W size = [600,110].
+H size = [110,600].
+The time for p=110 is 7.337707 s
+Image size = [600,600].
+Init gradient norm 362192856.080789
+....
+Iter = 45 Final proj-grad norm 3454.515833
+W size = [600,120].
+H size = [120,600].
+The time for p=120 is 4.796073 s
+Image size = [600,600].
+Init gradient norm 411195728.500719
+...Max iter in nlssubprob
+
+Iter = 38 Final proj-grad norm 1153.564227
+W size = [600,130].
+H size = [130,600].
+The time for p=130 is 6.272818 s
+Image size = [600,600].
+Init gradient norm 466150989.378393
+..
+Iter = 28 Final proj-grad norm 3964.285252
+W size = [600,140].
+H size = [140,600].
+The time for p=140 is 4.940286 s
+Image size = [600,600].
+Init gradient norm 524196466.354214
+..
+Iter = 27 Final proj-grad norm 5218.475595
+W size = [600,150].
+H size = [150,600].
+The time for p=150 is 4.398554 s
+Image size = [600,600].
+Init gradient norm 579165802.536338
+..
+Iter = 23 Final proj-grad norm 5186.440688
+W size = [600,160].
+H size = [160,600].
+The time for p=160 is 3.973776 s
+Image size = [600,600].
+Init gradient norm 634298226.457489
+.
+Iter = 20 Final proj-grad norm 6314.331701
+W size = [600,170].
+H size = [170,600].
+The time for p=170 is 3.752886 s
+Image size = [600,600].
+Init gradient norm 702365952.255953
+.
+Iter = 19 Final proj-grad norm 6962.797437
+W size = [600,180].
+H size = [180,600].
+The time for p=180 is 3.551539 s
+Image size = [600,600].
+Init gradient norm 773998702.259008
+.
+Iter = 17 Final proj-grad norm 7678.315655
+W size = [600,190].
+H size = [190,600].
+The time for p=190 is 3.873416 s
+Image size = [600,600].
+Init gradient norm 832096485.797653
+.
+Iter = 17 Final proj-grad norm 8279.503319
+W size = [600,200].
+H size = [200,600].
+The time for p=200 is 3.923809 s
+Image size = [600,600].
+Init gradient norm 901842512.793437
+.
+Iter = 16 Final proj-grad norm 8972.078061
+W size = [600,210].
+H size = [210,600].
+The time for p=210 is 3.978494 s
+Image size = [600,600].
+Init gradient norm 964829229.590639
+.
+Iter = 16 Final proj-grad norm 1332.181121
+W size = [600,220].
+H size = [220,600].
+The time for p=220 is 13.310743 s
+Image size = [600,600].
+Init gradient norm 1038242295.727523
+.
+Iter = 14 Final proj-grad norm 1463.397270
+W size = [600,230].
+H size = [230,600].
+The time for p=230 is 12.881698 s
+Image size = [600,600].
+Init gradient norm 1105578429.132374
+.
+Iter = 13 Final proj-grad norm 10937.008257
+W size = [600,240].
+H size = [240,600].
+The time for p=240 is 7.076107 s
+Image size = [600,600].
+Init gradient norm 1181998915.018930
+.
+Iter = 13 Final proj-grad norm 11712.730547
+W size = [600,250].
+H size = [250,600].
+The time for p=250 is 7.961184 s
+Image size = [600,600].
+Init gradient norm 1267025418.472889
+.
+Iter = 13 Final proj-grad norm 12532.466267
+W size = [600,260].
+H size = [260,600].
+The time for p=260 is 7.039017 s
+Image size = [600,600].
+Init gradient norm 1340915181.191674
+.
+Iter = 12 Final proj-grad norm 13100.142189
+W size = [600,270].
+H size = [270,600].
+The time for p=270 is 7.157711 s
+Image size = [600,600].
+Init gradient norm 1414472104.747670
+.
+Iter = 12 Final proj-grad norm 13915.005715
+W size = [600,280].
+H size = [280,600].
+The time for p=280 is 7.163213 s
+Image size = [600,600].
+Init gradient norm 1494562744.999563
+.
+Iter = 13 Final proj-grad norm 14652.999714
+W size = [600,290].
+H size = [290,600].
+The time for p=290 is 7.519810 s
+Image size = [600,600].
+Init gradient norm 1584761364.274520
+.
+Iter = 11 Final proj-grad norm 15691.128301
+W size = [600,300].
+H size = [300,600].
+The time for p=300 is 6.960657 s
