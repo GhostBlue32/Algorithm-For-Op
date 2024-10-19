@@ -32,7 +32,7 @@ function test_nonnegative_matrix_factorization()
   disp(norm(W*H-A, 'fro'))
 
 
-  [W, H] = nmfLin(A, W0, H0);
+  [W, H] = nmfLin(A, W0, H0, tol);
   fprintf('W = \n')
   disp(W)
   
