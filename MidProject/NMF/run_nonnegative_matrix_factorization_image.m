@@ -3,7 +3,7 @@ function run_nonnegative_matrix_factorization_image()
     for p = 10:10:300
         
         starttime = toc;
-        tol = 1e-5;
+        tol = 1e-3;
     
         C = imread('Pro.png');  % This image is in uint8 format.
         
@@ -24,7 +24,8 @@ function run_nonnegative_matrix_factorization_image()
         % Do factorization
         %[W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
         %[W,H] = Coordinate_descent(Cr, W0, H0, tol);
-        [W,H] = nmfLin(Cr, W0, H0, tol);
+        %[W,H] = nmfLin(Cr, W0, H0, tol);
+        [W,H] = nonnegative_matrix_factorization(Cr, W0, H0, tol);
         
         [r,c] = size(W);  
         fprintf('W size = [%d,%d].\n', r, c)  
@@ -39,7 +40,8 @@ function run_nonnegative_matrix_factorization_image()
         % Save the image with a name that includes the value of p
         %filename = sprintf('GSDresult/reconstructed_image_p=%d.png', p);
         %filename = sprintf('CDresult/reconstructed_image_p=%d.png', p);
-        filename = sprintf('Linresult/reconstructed_image_p=%d.png', p);
+        %filename = sprintf('Linresult/reconstructed_image_p=%d.png', p);
+        filename = sprintf('Myresult/reconstructed_image_p=%d.png', p);
         imwrite(D, filename);
         fprintf('The time for p=%d is %f s\n', p, endtime - starttime)
     end
