@@ -1,6 +1,6 @@
 function test_nonnegative_matrix_factorization()
 
-  tol = 1e-4;
+  tol = 1e-3;
 
   % Target matrix is nonnegative.
   r = 8;  % Numrows

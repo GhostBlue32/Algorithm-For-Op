@@ -24,13 +24,12 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
 
     % Step
     HHt = Hn * (Hn');
-    tkw = 1/norm(HHt);   % Step size from reference.
     %delta = alpha*gwn;
 
     % Backstepping
     alpha = 1;
     for iter = 1:20
-        Wi = max(Wn - alpha * tkw * gwn, 0);
+        Wi = max(Wn - alpha * gwn, 0);
         d = Wi - Wn;
         gradd = sum(sum(gwn .* d));
         dQd = sum(sum((d * HHt) .* d));
@@ -42,20 +41,19 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         if dec_al
             if signal
                 Wnp1 = Wi;
+                fprintf('Yes\n')
                 break;
             else
                 alpha = alpha * beta;
             end
         else
-            Wnp1 = Wi;
-            break;
-            % if ~signal | Wp == Wi
-            %     Wnp1 = Wp;
-            %     break;
-            % else
-            %     alpha = alpha / beta;
-            %     Wp = Wi;
-            % end
+            if ~signal | Wp == Wi | norm(Wi) == 0
+                Wnp1 = Wp;
+                break;
+            else
+                alpha = alpha / beta;
+                Wp = Wi;
+            end
         end
     end
 
@@ -67,13 +65,12 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
 
     % Step
     WtW = Wn' * Wn;
-    tkh = 1/norm(WtW);
     %delta = alpha*ghn; 
 
     % Backstepping
     alpha = 1;
     for iter = 1:20
-        Hi = max(Hn - alpha * tkh * ghn, 0);
+        Hi = max(Hn - alpha * ghn, 0);
         d = Hi - Hn;
         gradd = sum(sum(ghn .* d));
         dQd = sum(sum((WtW * d) .* d));
@@ -85,34 +82,34 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         if dec_al
             if signal
                 Hnp1 = Hi;
+                fprintf('Yes\n')
                 break;
             else
                 alpha = alpha * beta;
             end
         else
-            Hnp1 = Hi;
-            break;
-            % if ~signal | Hp == Hi
-            %     Hnp1 = Hp;
-            %     break;
-            % else
-            %     alpha = alpha / beta;
-            %     Hp = Hi;
-            % end
+            if ~signal | Hp == Hi | norm(Hi) == 0
+                Hnp1 = Hp;
+                break;
+            else
+                alpha = alpha / beta;
+                Hp = Hi;
+            end
         end
     end
-
-   
-
-    % Check for convergence
-    if (norm(Wn - Wnp1) < tol && norm(Hn - Hnp1) < tol)
-      fprintf('Converged after %d iterations.\n', i)
-      return
-    end
-
+    
+    % init grad
+    if i == 1
+        initgrad = norm([gwn; ghn'], 'fro');
     % Move variables back.
     Wn = Wnp1;
-    Hn = Hnp1;    
+    Hn = Hnp1; 
+
+    % Check for convergence
+    projnorm = norm([gwn(gwn<0 | Wn>0); ghn(ghn<0 | Hn>0)]);
+    if projnorm < tol * initgrad
+        break;
+    end
     
     %fprintf('--------------------------------------------\n')
     %pause()
