@@ -24,12 +24,13 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
 
     % Step
     HHt = Hn * (Hn');
+    tkw = 1 / norm(HHt);
     %delta = alpha*gwn;
 
     % Backstepping
     alpha = 1;
     for iter = 1:20
-        Wi = max(Wn - alpha * gwn, 0);
+        Wi = max(Wn - alpha * tkw * gwn, 0);
         d = Wi - Wn;
         gradd = sum(sum(gwn .* d));
         dQd = sum(sum((d * HHt) .* d));
@@ -65,12 +66,13 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
 
     % Step
     WtW = Wn' * Wn;
+    tkh = 1 / norm(WtW);
     %delta = alpha*ghn; 
 
     % Backstepping
     alpha = 1;
     for iter = 1:20
-        Hi = max(Hn - alpha * ghn, 0);
+        Hi = max(Hn - alpha * tkh * ghn, 0);
         d = Hi - Hn;
         gradd = sum(sum(ghn .* d));
         dQd = sum(sum((WtW * d) .* d));
@@ -101,6 +103,7 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     % init grad
     if i == 1
         initgrad = norm([gwn; ghn'], 'fro');
+    end
     % Move variables back.
     Wn = Wnp1;
     Hn = Hnp1; 
@@ -108,13 +111,14 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     % Check for convergence
     projnorm = norm([gwn(gwn<0 | Wn>0); ghn(ghn<0 | Hn>0)]);
     if projnorm < tol * initgrad
+        fprintf('Converge after %d iteration', i);
         break;
     end
     
     %fprintf('--------------------------------------------\n')
     %pause()
     
-  end  % end of for loop
 
 %error('nonnegative matrix factorization terminated without convergence!\n')
+  end
 end

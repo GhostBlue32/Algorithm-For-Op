@@ -3,7 +3,7 @@ function run_nonnegative_matrix_factorization_image()
     for p = 10:10:300
         
         starttime = toc;
-        tol = 1e-3;
+        tol = 1e-4;
     
         C = imread('Pro.png');  % This image is in uint8 format.
         
