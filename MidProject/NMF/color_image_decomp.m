@@ -1,6 +1,6 @@
 function color_image_decomp()
     tic;
-    for p = 100:25:300
+    for p = 100:50:300
         
         starttime = toc;
         tol = 1e-3;
@@ -49,7 +49,7 @@ function color_image_decomp()
         endtime = toc;
 
         % Save the image with a name that includes the value of p
-        filename = sprintf('Myresultc/reconstructed_image_p=%d.png', p);
+        filename = sprintf('demo/reconstructed_image_p=%d.png', p);
         imwrite(D_color, filename);
         fprintf('The time for p=%d is %f s\n', p, endtime - starttime)
     end
