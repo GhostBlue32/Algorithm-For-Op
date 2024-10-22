@@ -20,7 +20,7 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     Wn = Wnp1;
     Hn = Hnp1;
     %---------------------------
-    % Step
+    % Step and Gradient
     HHt = Hn * (Hn');
     tkw = 1 / norm(HHt);
     gwn = Wnp1 * (HHt) - A * (Hn');
@@ -32,16 +32,19 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
         gamma = (1 - lambdap) / lambda;
         Vp = V;
-        gwn = gwn + 
-        V = max(Wnp1 - tkw * gwn, 0);
+        WHHt = (Wnp1 - Wn) * HHt;
+        gwnn = gwn + (Wnp1 - Wn) * HHt;
+        V = max(Wnp1 - tkw * gwnn, 0);
         Wnp1 = (1 - gamma) * V + gamma * Vp;
         i = i + 1;
     end
+    gwn = gwnn;
 
     %---------------------------    
-    % Step
+    % Step and Gradient
     WtW = Wnp1' * Wnp1;
     tkh = 1 / norm(WtW);
+    ghn = WtW * Hnp1 - Wnp1' * A;
     
     lambda = 0;
     G = Hn;
@@ -50,11 +53,12 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
         gamma = (1 - lambdap) / lambda;
         Gp = G;
-        ghn = WtW * Hnp1 - Wnp1' * A;
-        G = max(Hnp1 - tkh * ghn, 0);
+        ghnn = ghn + WtW * (Hnp1 - Hn);
+        G = max(Hnp1 - tkh * ghnn, 0);
         Hnp1 = (1 - gamma) * G + gamma * Gp;
         i = i + 1;
     end
+    ghn = ghnn;
 
     
 
