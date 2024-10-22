@@ -13,10 +13,11 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
   Wnp1 = W0;
   Hnp1 = H0;
   flag = 1;
+  i = 1;
 
   % Do optimization in a loop to prevent infinite loops
   % from nonconvergence
-  for i = 1:500000
+  while i < 500000
     Wn = Wnp1;
     Hn = Hnp1;
     %---------------------------
@@ -27,7 +28,7 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     
     lambda = 0;
     V = Wn;
-    for ineri = 1:20
+    for ineri = 1:100
         lambdap = lambda;
         lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
         gamma = (1 - lambdap) / lambda;
@@ -37,6 +38,13 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         V = max(Wnp1 - tkw * gwnn, 0);
         Wnp1 = (1 - gamma) * V + gamma * Vp;
         i = i + 1;
+        if ineri == 3
+            initg = norm(WHHt);
+        else 
+            if ineri > 3 && norm(WHHt) < initg * 0.8 * (1 - gamma)
+                break
+            end
+        end
     end
     gwn = gwnn;
 
@@ -48,15 +56,23 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     
     lambda = 0;
     G = Hn;
-    for ineri = 1:20
+    for ineri = 1:100
         lambdap = lambda;
         lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
         gamma = (1 - lambdap) / lambda;
         Gp = G;
-        ghnn = ghn + WtW * (Hnp1 - Hn);
+        WtWh = WtW * (Hnp1 - Hn);
+        ghnn = ghn + WtWh;
         G = max(Hnp1 - tkh * ghnn, 0);
         Hnp1 = (1 - gamma) * G + gamma * Gp;
         i = i + 1;
+        if ineri == 3
+            inith = norm(WtWh);
+        else 
+            if ineri > 3 && norm(WtWh) < inith * 0.8 * (1 - gamma)
+                break
+            end
+        end
     end
     ghn = ghnn;
 
@@ -79,6 +95,7 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
         fprintf('final norm is %f\n', fnorm);
         break;
     end
+    
     
     %fprintf('--------------------------------------------\n')
     %pause()
