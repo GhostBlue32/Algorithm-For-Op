@@ -10,103 +10,62 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
   % alpha = 0.00005;
     
   % Initialize algorithm and display starting point.
-  Wn = W0;
-  Hn = H0;
-  beta = 0.1;
+  Wnp1 = W0;
+  Hnp1 = H0;
+  flag = 1;
 
   % Do optimization in a loop to prevent infinite loops
   % from nonconvergence
   for i = 1:500000
+    Wn = Wnp1;
+    Hn = Hnp1;
     %---------------------------
-    % Get gradw at current point [Wn,Hn].
-    gwn = Wn * (Hn * (Hn')) - A * (Hn');
-
     % Step
     HHt = Hn * (Hn');
     tkw = 1 / norm(HHt);
-    tkw = trace((Wn * Hn - A)' * gwn * Hn) / trace(Hn' * (gwn') * gwn * Hn);
-    %delta = alpha*gwn;
-    Wnp1 = max(Wn - tkw * gwn, 0);
-    % % Backstepping
-    % alpha = 1;
-    % for iter = 1:20
-    %     Wi = max(Wn - alpha * tkw * gwn, 0);
-    %     d = Wi - Wn;
-    %     gradd = sum(sum(gwn .* d));
-    %     dQd = sum(sum((d * HHt) .* d));
-    %     signal = 0.9 * gradd + 0.5 * dQd < 0;
-    %     if iter == 1
-    %         dec_al = ~signal;
-    %         Wp = Wn;
-    %     end
-    %     if dec_al
-    %         if signal
-    %             Wnp1 = Wi;
-    %             fprintf('Yes\n')
-    %             break;
-    %         else
-    %             alpha = alpha * beta;
-    %         end
-    %     else
-    %         if ~signal | Wp == Wi | norm(Wi) == 0
-    %             Wnp1 = Wp;
-    %             break;
-    %         else
-    %             alpha = alpha / beta;
-    %             Wp = Wi;
-    %         end
-    %     end
-    % end
-
+    gwn = Wnp1 * (HHt) - A * (Hn');
     
-    %---------------------------
-    % Get gradh at current point [Wn,Hn].
-    ghn = Wnp1' * Wnp1 * Hn - Wnp1' * A;
+    lambda = 0;
+    V = Wn;
+    for ineri = 1:20
+        lambdap = lambda;
+        lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
+        gamma = (1 - lambdap) / lambda;
+        Vp = V;
+        gwn = gwn + 
+        V = max(Wnp1 - tkw * gwn, 0);
+        Wnp1 = (1 - gamma) * V + gamma * Vp;
+        i = i + 1;
+    end
 
+    %---------------------------    
     % Step
     WtW = Wnp1' * Wnp1;
     tkh = 1 / norm(WtW);
-    %delta = alpha*ghn;
-    Hnp1 = max(Hn - tkh * ghn, 0);
+    
+    lambda = 0;
+    G = Hn;
+    for ineri = 1:20
+        lambdap = lambda;
+        lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
+        gamma = (1 - lambdap) / lambda;
+        Gp = G;
+        ghn = WtW * Hnp1 - Wnp1' * A;
+        G = max(Hnp1 - tkh * ghn, 0);
+        Hnp1 = (1 - gamma) * G + gamma * Gp;
+        i = i + 1;
+    end
 
-    % % Backstepping
-    % alpha = 1;
-    % for iter = 1:20
-    %     Hi = max(Hn - alpha * tkh * ghn, 0);
-    %     d = Hi - Hn;
-    %     gradd = sum(sum(ghn .* d));
-    %     dQd = sum(sum((WtW * d) .* d));
-    %     signal = 0.9 * gradd + 0.5 * dQd < 0;
-    %     if iter == 1
-    %         dec_al = ~signal;
-    %         Hp = Hn;
-    %     end
-    %     if dec_al
-    %         if signal
-    %             Hnp1 = Hi;
-    %             fprintf('Yes\n')
-    %             break;
-    %         else
-    %             alpha = alpha * beta;
-    %         end
-    %     else
-    %         if ~signal | Hp == Hi | norm(Hi) == 0
-    %             Hnp1 = Hp;
-    %             break;
-    %         else
-    %             alpha = alpha / beta;
-    %             Hp = Hi;
-    %         end
-    %     end
-    % end
+    
+
+    
     
     % init grad
-    if i == 1
+    if flag == 1
         initgrad = norm([gwn; ghn'], 'fro');
+        flag = 0;
     end
-    % Move variables back.
-    Wn = Wnp1;
-    Hn = Hnp1; 
+    
 
     % Check for convergence
     projnorm = norm([gwn(gwn<0 | Wn>0); ghn(ghn<0 | Hn>0)], 'fro');

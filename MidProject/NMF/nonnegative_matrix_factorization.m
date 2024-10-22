@@ -10,45 +10,65 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
   % alpha = 0.00005;
     
   % Initialize algorithm and display starting point.
-  Wn = W0;
-  Hn = H0;
-  beta = 0.1;
+  Wnp1 = W0;
+  Hnp1 = H0;
+  flag = 1;
 
   % Do optimization in a loop to prevent infinite loops
   % from nonconvergence
   for i = 1:500000
+    Wn = Wnp1;
+    Hn = Hnp1;
     %---------------------------
-    % Get gradw at current point [Wn,Hn].
-    gwn = Wn * (Hn * (Hn')) - A * (Hn');
-
-    % Step
+    % Step and Gradient
     HHt = Hn * (Hn');
     tkw = 1 / norm(HHt);
-    %tkw = trace((Wn * Hn - A)' * gwn * Hn) / trace(Hn' * (gwn') * (gwn * Hn));
-    %delta = alpha*gwn;
-    Wnp1 = max(Wn - tkw * gwn, 0);
+    gwn = Wnp1 * (HHt) - A * (Hn');
     
-    
-    %---------------------------
-    % Get gradh at current point [Wn,Hn].
-    ghn = Wnp1' * Wnp1 * Hn - Wnp1' * A;
+    lambda = 0;
+    V = Wn;
+    for ineri = 1:20
+        lambdap = lambda;
+        lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
+        gamma = (1 - lambdap) / lambda;
+        Vp = V;
+        gwnn = gwn + (Wnp1 - Wn) * HHt;
+        V = max(Wnp1 - tkw * gwnn, 0);
+        Wnp1 = (1 - gamma) * V + gamma * Vp;
+        i = i + 1;
+    end
+    gwn = gwnn;
 
-    % Step
+    %---------------------------    
+    % Step and Gradient
     WtW = Wnp1' * Wnp1;
     tkh = 1 / norm(WtW);
-    %tkh = trace((Wnp1 * Hn - A)' * Wnp1 * ghn) / trace(ghn' * WtW * ghn);
-    %delta = alpha*ghn;
-    Hnp1 = max(Hn - tkh * ghn, 0);
+    ghn = WtW * Hnp1 - Wnp1' * A;
+    
+    lambda = 0;
+    G = Hn;
+    for ineri = 1:20
+        lambdap = lambda;
+        lambda = 0.5 * (1 + sqrt(1 + 4 * lambda^2));
+        gamma = (1 - lambdap) / lambda;
+        Gp = G;
+        ghnn = ghn + WtW * (Hnp1 - Hn);
+        G = max(Hnp1 - tkh * ghnn, 0);
+        Hnp1 = (1 - gamma) * G + gamma * Gp;
+        i = i + 1;
+    end
+    ghn = ghnn;
+
+    
 
     
     
     % init grad
-    if i == 1
+    if flag == 1
         initgrad = norm([gwn; ghn'], 'fro');
+        flag = 0;
     end
-    % Move variables back.
-    Wn = Wnp1;
-    Hn = Hnp1; 
+    
 
     % Check for convergence
     projnorm = norm([gwn(gwn<0 | Wn>0); ghn(ghn<0 | Hn>0)], 'fro');

@@ -1,0 +1,139 @@
+Image size = [600,600].
+Converge after 177 iteration
+final norm is 9499.168979
+W size = [600,10].
+H size = [10,600].
+The time for p=10 is 0.983315 s
+Image size = [600,600].
+Converge after 460 iteration
+final norm is 7169.885576
+W size = [600,20].
+H size = [20,600].
+The time for p=20 is 4.020942 s
+Image size = [600,600].
+Converge after 700 iteration
+final norm is 6010.271819
+W size = [600,30].
+H size = [30,600].
+The time for p=30 is 8.911672 s
+Image size = [600,600].
+Converge after 1419 iteration
+final norm is 5281.516142
+W size = [600,40].
+H size = [40,600].
+The time for p=40 is 20.875950 s
+Image size = [600,600].
+Converge after 1625 iteration
+final norm is 4786.677272
+W size = [600,50].
+H size = [50,600].
+The time for p=50 is 30.789369 s
+Image size = [600,600].
+Converge after 1548 iteration
+final norm is 4383.434116
+W size = [600,60].
+H size = [60,600].
+The time for p=60 is 30.801674 s
+Image size = [600,600].
+Converge after 1884 iteration
+final norm is 4038.084458
+W size = [600,70].
+H size = [70,600].
+The time for p=70 is 50.481242 s
+Image size = [600,600].
+Converge after 2547 iteration
+final norm is 3690.718545
+W size = [600,80].
+H size = [80,600].
+The time for p=80 is 86.224358 s
+Image size = [600,600].
+Converge after 3196 iteration
+final norm is 3390.726725
+W size = [600,90].
+H size = [90,600].
+The time for p=90 is 116.354944 s
+Image size = [600,600].
+Converge after 2718 iteration
+final norm is 3130.563811
+W size = [600,100].
+H size = [100,600].
+The time for p=100 is 73.719878 s
+Image size = [600,600].
+Converge after 3317 iteration
+final norm is 2917.422897
+W size = [600,110].
+H size = [110,600].
+The time for p=110 is 101.384643 s
+Image size = [600,600].
+Converge after 3109 iteration
+final norm is 2702.416095
+W size = [600,120].
+H size = [120,600].
+The time for p=120 is 97.702779 s
+Image size = [600,600].
+Converge after 3054 iteration
+final norm is 2493.060690
+W size = [600,130].
+H size = [130,600].
+The time for p=130 is 116.585904 s
+Image size = [600,600].
+Converge after 2772 iteration
+final norm is 2329.006422
+W size = [600,140].
+H size = [140,600].
+The time for p=140 is 107.602959 s
+Image size = [600,600].
+Converge after 2790 iteration
+final norm is 2164.703112
+W size = [600,150].
+H size = [150,600].
+The time for p=150 is 116.662524 s
+Image size = [600,600].
+Converge after 3468 iteration
+final norm is 2021.463746
+W size = [600,160].
+H size = [160,600].
+The time for p=160 is 154.038938 s
+Image size = [600,600].
+Converge after 3295 iteration
+final norm is 1882.739347
+W size = [600,170].
+H size = [170,600].
+The time for p=170 is 157.049085 s
+Image size = [600,600].
+Converge after 2735 iteration
+final norm is 1757.245614
+W size = [600,180].
+H size = [180,600].
+The time for p=180 is 144.626995 s
+Image size = [600,600].
+Converge after 3524 iteration
+final norm is 1642.113533
+W size = [600,190].
+H size = [190,600].
+The time for p=190 is 222.672735 s
+Image size = [600,600].
+Converge after 3065 iteration
+final norm is 1547.031339
+W size = [600,200].
+H size = [200,600].
+The time for p=200 is 172.246996 s
+Image size = [600,600].
+Converge after 2874 iteration
+final norm is 1446.752366
+W size = [600,210].
+H size = [210,600].
+The time for p=210 is 189.803490 s
+Image size = [600,600].
+Converge after 3182 iteration
+final norm is 1355.177167
+W size = [600,220].
+H size = [220,600].
+The time for p=220 is 349.699852 s
+Image size = [600,600].
+Converge after 3028 iteration
+final norm is 1278.446592
+W size = [600,230].
+H size = [230,600].
+The time for p=230 is 355.040892 s
+Image size = [600,600].
