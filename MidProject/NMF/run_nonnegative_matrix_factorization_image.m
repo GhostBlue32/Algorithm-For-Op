@@ -1,6 +1,6 @@
 function run_nonnegative_matrix_factorization_image()
     tic;
-    for p = 100:10:300
+    for p = 10:10:100
         
         starttime = toc;
         tol = 1e-3;
@@ -41,7 +41,7 @@ function run_nonnegative_matrix_factorization_image()
         %filename = sprintf('GSDresult/reconstructed_image_p=%d.png', p);
         %filename = sprintf('CDresult/reconstructed_image_p=%d.png', p);
         %filename = sprintf('Linresult/reconstructed_image_p=%d.png', p);
-        filename = sprintf('demo/reconstructed_image_p=%d.png', p);
+        filename = sprintf('Myresult2/reconstructed_image_p=%d.png', p);
         imwrite(D, filename);
         fprintf('The time for p=%d is %f s\n', p, endtime - starttime)
     end
