@@ -24,10 +24,40 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     % Step
     HHt = Hn * (Hn');
     tkw = 1 / norm(HHt);
-    %tkw = trace((Wn * Hn - A)' * gwn * Hn) / trace(Hn' * (gwn') * (gwn * Hn));
+    tkw = trace((Wn * Hn - A)' * gwn * Hn) / trace(Hn' * (gwn') * gwn * Hn);
     %delta = alpha*gwn;
     Wnp1 = max(Wn - tkw * gwn, 0);
-    
+    % % Backstepping
+    % alpha = 1;
+    % for iter = 1:20
+    %     Wi = max(Wn - alpha * tkw * gwn, 0);
+    %     d = Wi - Wn;
+    %     gradd = sum(sum(gwn .* d));
+    %     dQd = sum(sum((d * HHt) .* d));
+    %     signal = 0.9 * gradd + 0.5 * dQd < 0;
+    %     if iter == 1
+    %         dec_al = ~signal;
+    %         Wp = Wn;
+    %     end
+    %     if dec_al
+    %         if signal
+    %             Wnp1 = Wi;
+    %             fprintf('Yes\n')
+    %             break;
+    %         else
+    %             alpha = alpha * beta;
+    %         end
+    %     else
+    %         if ~signal | Wp == Wi | norm(Wi) == 0
+    %             Wnp1 = Wp;
+    %             break;
+    %         else
+    %             alpha = alpha / beta;
+    %             Wp = Wi;
+    %         end
+    %     end
+    % end
+
     
     %---------------------------
     % Get gradh at current point [Wn,Hn].
@@ -36,11 +66,39 @@ function [Wnp1, Hnp1] = nonnegative_matrix_factorization(A, W0, H0, tol)
     % Step
     WtW = Wnp1' * Wnp1;
     tkh = 1 / norm(WtW);
-    %tkh = trace((Wnp1 * Hn - A)' * Wnp1 * ghn) / trace(ghn' * WtW * ghn);
     %delta = alpha*ghn;
     Hnp1 = max(Hn - tkh * ghn, 0);
 
-    
+    % % Backstepping
+    % alpha = 1;
+    % for iter = 1:20
+    %     Hi = max(Hn - alpha * tkh * ghn, 0);
+    %     d = Hi - Hn;
+    %     gradd = sum(sum(ghn .* d));
+    %     dQd = sum(sum((WtW * d) .* d));
+    %     signal = 0.9 * gradd + 0.5 * dQd < 0;
+    %     if iter == 1
+    %         dec_al = ~signal;
+    %         Hp = Hn;
+    %     end
+    %     if dec_al
+    %         if signal
+    %             Hnp1 = Hi;
+    %             fprintf('Yes\n')
+    %             break;
+    %         else
+    %             alpha = alpha * beta;
+    %         end
+    %     else
+    %         if ~signal | Hp == Hi | norm(Hi) == 0
+    %             Hnp1 = Hp;
+    %             break;
+    %         else
+    %             alpha = alpha / beta;
+    %             Hp = Hi;
+    %         end
+    %     end
+    % end
     
     % init grad
     if i == 1
